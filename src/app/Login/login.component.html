@@ -2,7 +2,7 @@
 
 <div class="grid">
 
-  <form class="form login">
+  <form class="form login" [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <img src="../assets/logo.png" width="320px">
 
@@ -12,9 +12,15 @@
           <use xlink:href="#icon-user"></use>
         </svg>
         <span class="hidden">Username</span></label>
-      <input autocomplete="username" id="login__username" type="text" name="username" class="form__input"
-             placeholder="Usuario" required>
+      <input autocomplete="document" id="login__username" type="text" name="document" class="form__input"
+             formControlName="document"
+             [ngClass]="{ 'is-invalid': submitted && f['document'].errors }"
+             placeholder="documento" required>
     </div>
+
+<!--    <div *ngIf="form.get('document')!.invalid && (form.get('document')!.dirty || form.get('document')!.touched)">-->
+<!--      Por favor ingresa un documento-->
+<!--    </div>-->
 
     <div class="form__field">
       <label for="login__password">
@@ -23,24 +29,26 @@
         </svg>
         <span class="hidden">Password</span></label>
       <input id="login__password" type="password" name="password" class="form__input"
+             formControlName="password"
              placeholder="Password" required>
     </div>
 
 
     <div class="form__field">
-      <input type="submit" (click)="onSubmit()" value="Continuar">
+    <input *ngIf="form.valid" type="submit" value="Continuar">
     </div>
 
   </form>
 
   <p class="text--center">
-     <cite>Siempre con la bendicion de Dios</cite>
-<!--    <svg class="icon">-->
-<!--      <use xlink:href="#icon-arrow-right"></use>-->
-<!--    </svg>-->
+    <cite>Siempre con la bendicion de Dios</cite>
+    <!--    <svg class="icon">-->
+    <!--      <use xlink:href="#icon-arrow-right"></use>-->
+    <!--    </svg>-->
   </p>
 
 </div>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" class="icons">
   <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
