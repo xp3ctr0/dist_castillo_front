@@ -3,17 +3,21 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginComponent} from './Login/login.component';
-import {EntradasComponent} from './Entradas/entradas.component';
-import {LayoutComponent} from './Layout/layout.component';
+import {LoginComponent} from './pages/Login/login.component';
+import {EntradasComponent} from './pages/Entradas/entradas.component';
+import {LayoutComponent} from './pages/Layout/layout.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ProductsComponent } from './pages/products/products.component';
+import { StatesPipe } from './Pipes/state/states.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EntradasComponent,
-    LayoutComponent
+    LayoutComponent,
+    ProductsComponent,
+    StatesPipe
   ],
   imports: [
     BrowserModule,

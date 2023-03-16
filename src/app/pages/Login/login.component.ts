@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../services/auth/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       if(response["message"] === 'OK'){
         localStorage.setItem("document",btoa(data.document));
         this.form.reset();
-        this.router.navigate(['/entradas']);
+        this.router.navigate(['/productos']);
       }
     });
   }

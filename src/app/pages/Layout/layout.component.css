@@ -102,3 +102,32 @@ body {
     overflow-y: auto;
   }
 }
+
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contenedor img {
+  max-width: 100%;
+  height: auto;
+}
+
+.fondo {
+  background-color: #434a52;
+}
+
+.logout {
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.logout:hover {
+  -webkit-transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}

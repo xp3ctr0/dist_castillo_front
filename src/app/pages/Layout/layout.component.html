@@ -1,0 +1,63 @@
+<!--<div class="nav">-->
+<!--  <input type="checkbox" id="nav-check">-->
+<!--  <div class="nav-header">-->
+<!--    <div class="nav-title">-->
+<!--      <img class="contenedor" src="../assets/logo.png" width="90px" alt="logo">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="nav-btn">-->
+<!--    <label for="nav-check">-->
+<!--      <span></span>-->
+<!--      <span></span>-->
+<!--      <span></span>-->
+<!--    </label>-->
+<!--  </div>-->
+
+<!--  <div class="nav-links">-->
+<!--    <a routerLink="/inventario" href="#" class="text-xl font-bold no-underline hover:underline ...">Inventario</a>-->
+<!--    <a routerLink="/" href="#" class="text-xl font-bold no-underline hover:underline ...">Entradas</a>-->
+<!--    <a routerLink="/home" href="#" class="text-xl font-bold no-underline hover:underline ...">Salidas</a>-->
+<!--    <a routerLink="/about" href="#" class="text-xl font-bold no-underline hover:underline ...">Clientes</a>-->
+<!--    <a routerLink="/about" href="#" class="text-xl font-bold no-underline hover:underline ...">Proveedores</a>-->
+<!--    <a routerLink="/about" (click)="closeApp()" class="text-xl text-end font-bold no-underline hover:underline ...">Salir</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light fondo">
+  <div class="container-fluid">
+        <div class="nav-title">
+          <img class="contenedor" src="../assets/logo.png" width="90px" alt="logo">
+        </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="d-flex">
+        <div class="nav-title">
+          <img class="logout" (click)="closeApp()" src="../assets/logout.png" width="36px" alt="logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

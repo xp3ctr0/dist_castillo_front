@@ -11,6 +11,8 @@ export class LayoutComponent {
   constructor(private router:Router) {
   }
   closeApp(){
+    localStorage.clear();
+    console.log('close app');
     this.router.navigate(['/login']);
   }
 
