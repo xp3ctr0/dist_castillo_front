@@ -1,0 +1,71 @@
+<app-layout></app-layout>
+<div class="p-5">
+
+  <section>
+    <h3>Inventario de Productos</h3>
+  </section>
+
+  <section class="pb-4 pt-4">
+    <button type="button" class="btn btn-outline-primary" (click)="setTitle(2)" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">Nuevo Producto
+    </button>
+  </section>
+
+  <section>
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">U.Medida</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Estado</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of PRODUCTS" (click)="setTitle(1)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+          class="pointer__event">
+        <th scope="row">{{p.PRO_ID}}</th>
+        <td>{{p.PRO_NAME}}</td>
+        <td>{{p.PRO_UNIDAD_MEDIDA}}</td>
+        <td>{{p.PRO_STOCK}}</td>
+        <td>{{p.PRO_ESTATE.data[0] | states}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <!-- Modal -->
+    <div class="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="staticBackdrop"
+         data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">{{TITLE_MODAL}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="form">
+              <div class="mb-3">
+                <label for="InputProducto" class="form-label">Producto</label>
+                <input type="text" class="form-control" id="InputProducto" formControlName="producto">
+              </div>
+              <div class="mb-3">
+                <label for="InputUn" class="form-label">Unidad de medida</label>
+                <select class="form-select" aria-label="Default select example" formControlName="unidad_medida" id="InputUn">
+                  <option selected>Selecciona</option>
+                  <option value="Kg">Kg</option>
+                </select>
+<!--                <label for="InputModifyUN" class="form-label">Unidad de medida</label>-->
+<!--                <input type="text" class="form-control" id="InputModifyUN" formControlName="unidad_medida">-->
+              </div>
+              <button [disabled]="form.invalid" type="button" (click)="agregarOModificarProducto()" class="btn btn-primary" data-bs-dismiss="modal">{{TITLE_BUTTON}}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,93 @@
+<app-layout></app-layout>
+<div class="p-5">
+
+  <section>
+    <h3>Clientes</h3>
+  </section>
+
+  <section class="pb-4 pt-4">
+    <button type="button" class="btn btn-outline-primary" (click)="setTitle(2)" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">Nuevo {{PANTALLA}}
+    </button>
+  </section>
+
+  <section>
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Restaurante</th>
+        <th scope="col">Contacto</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Telefono</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of CLIENTES" (click)="setTitle(1)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+          class="pointer__event">
+        <th scope="row">{{c.CLI_ID}}</th>
+        <td>{{c.CLI_RESTAURANT}}</td>
+        <td>{{c.CLI_CONTACT}}</td>
+        <td>{{c.CLI_DOCUMENT}}</td>
+        <td>{{c.CIT_NAME}}</td>
+        <td>{{c.CLI_ADDRESS}}</td>
+        <td>{{c.CLI_PHONE}}</td>
+<!--        <td>{{p.PRO_UNIDAD_MEDIDA}}</td>-->
+<!--        <td>{{p.PRO_STOCK}}</td>-->
+<!--        <td>{{p.PRO_ESTATE.data[0] | states}}</td>-->
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <!-- Modal -->
+    <div class="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="staticBackdrop"
+         data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">{{TITLE_MODAL}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="form">
+              <div class="mb-3">
+                <label for="InputRestaurante" class="form-label">Restaurante</label>
+                <input type="text" class="form-control" id="InputRestaurante" formControlName="restaurante">
+              </div>
+              <div class="mb-3">
+                <label for="InputContacto" class="form-label">Contacto</label>
+                <input type="text" class="form-control" id="InputContacto" formControlName="contacto">
+              </div>
+              <div class="mb-3">
+                <label for="InputDocumento" class="form-label">Documento</label>
+                <input type="text" class="form-control" id="InputDocumento" formControlName="documento">
+              </div>
+              <div class="mb-3">
+                <label for="InputDireccion" class="form-label">Direccion</label>
+                <input type="text" class="form-control" id="InputDireccion" formControlName="direccion">
+              </div>
+              <div class="mb-3">
+                <label for="InputTelefono" class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="InputTelefono" formControlName="telefono">
+              </div>
+              <div class="mb-3">
+                <label for="InputCity" class="form-label">Ciudad</label>
+                <select class="form-select" aria-label="Default select example" formControlName="ciudad" id="InputCity">
+                  <option *ngFor="let ci of CITIES" value="{{ci.CIT_ID}}">{{ci.CIT_NAME}}</option>
+                </select>
+                <!--                <label for="InputModifyUN" class="form-label">Unidad de medida</label>-->
+                <!--                <input type="text" class="form-control" id="InputModifyUN" formControlName="unidad_medida">-->
+              </div>
+              <button [disabled]="form.invalid" type="button" (click)="agregarOModificarCliente()" class="btn btn-primary" data-bs-dismiss="modal">{{TITLE_BUTTON}}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

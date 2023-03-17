@@ -14,4 +14,8 @@ export class ProductsService {
   public getProducts() {
     return this.http.get(`${this.REST_API_SERVER}productos`);
   }
+
+  public addProduct(data:any){
+    return this.http.post(`${this.REST_API_SERVER}productos`,data);
+  }
 }

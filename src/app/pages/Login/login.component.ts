@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth/auth.service";
+import {AuthService} from "../../Services/Auth/auth.service";
+import {ResourcesService} from "../../Services/Resources/resources.service";
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,18 @@ import {AuthService} from "../../services/auth/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private CITIES: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private resourcesService: ResourcesService) {
+    let doc = localStorage.getItem('document');
+    if(doc != null){
+      this.router.navigate(['/productos']);
+    }
   }
 
   form: FormGroup = new FormGroup({
-    document: new FormControl(''),
-    password: new FormControl('')
+    document: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   submitted = false;
@@ -32,9 +38,10 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.doLogin(data).subscribe((response: any) => {
-      if(response["message"] === 'OK'){
-        localStorage.setItem("document",btoa(data.document));
+      if (response["message"] === 'OK') {
+        localStorage.setItem("document", btoa(data.document));
         this.form.reset();
+        this.getCities();
         this.router.navigate(['/productos']);
       }
     });
@@ -66,4 +73,11 @@ export class LoginComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+
+  getCities() {
+    this.resourcesService.getCities().subscribe((response: any) => {
+      localStorage.setItem('ciudades',JSON.stringify(response));
+    });
+  }
+
 }
